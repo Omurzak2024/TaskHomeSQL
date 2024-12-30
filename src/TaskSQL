@@ -1,0 +1,26 @@
+create table job(
+    id serial,
+    professions varchar
+);
+
+
+
+create table employee(
+    id serial,
+    first_name varchar,
+    last_name varchar,
+    email varchar,
+    date_of_birth int
+    );
+
+drop table job;
+drop table employee;
+
+alter table job add primary key (id);
+alter table employee add primary key (id);
+alter table job add constraint unique_id unique (id);
+alter table employee add constraint unique_id1 unique (id);
+alter table employee add constraint unique_email1 unique (email);
+alter table employee alter column date_of_birth set not null ;
+alter table employee add column job_id int;
+alter table employee add constraint fk_job foreign key (job_id) references job(id);
